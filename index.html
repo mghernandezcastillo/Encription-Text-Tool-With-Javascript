@@ -4,45 +4,69 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>Text Encription Tool</title>
   </head>
   <body>
+
+    <!-- Program description-->
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h1>Text Encription Tool</h1>
+        </div>
+      </div>
+
     <div class="header">
-        <h1>Text Encryption Tool With Javascript</h1>
+      <h1>Text Encryption Tool With Javascript</h1>
     </div>
     <div class="container">
 
-      <input type="text" name="input_text" id="input_text" placeholder="Enter your text" />
+      <p id="error_message"></p>
+
+      <input
+        type="text"
+        name="input_text"
+        id="input_text"
+        placeholder="Enter your text"
+      />
 
       <div class="buttons_container">
         <button id="encrypt_button">Encrypt</button>
         <button id="decrypt_button">Decrypt</button>
       </div>
 
-
       <div id="output_text_container">
         <p id="output_text">Encrypted Text Here</p>
         <div class="buttons_container">
-            <button id="copy_button">Copy</button>
-            <button id="clear_button">Clear</button>
+          <button id="copy_button">Copy</button>
+          <button id="clear_button">Clear</button>
         </div>
         <p id="copied_message">Copied!</p>
       </div>
 
+      <!-- instructions -->
+      <div class="instructions">
+        <h2>Instructions</h2>
+        <ul>
+          <li>Don't use spanish characters, only english characters.</li>
+          <li>Use only lowercase letters.</li>
+        </ul>
+      </div>
     </div>
 
-
-      <!-- Footer with my name -->
-      <footer>
-        <p>
-          &copy;<a
-            href="https://www.linkedin.com/in/michael-hernandez-castillo/"
-            >Michael Gerardo Hernández</a
-          >
-        </p>
-      </footer>
+    <!-- Footer with my name -->
+    <footer>
+      <p>
+        &copy;<a href="https://www.linkedin.com/in/michael-hernandez-castillo/"
+          >Michael Gerardo Hernández</a
+        >
+      </p>
+    </footer>
     <script src="script.js"></script>
   </body>
 </html>

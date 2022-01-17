@@ -112,6 +112,12 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     display: none;
 }
 
+#error_message {
+    color: #c24f62;
+    font-size: 15px;
+    display: none;
+}
+
 /* Footer always visible and at the bottom and background color*/
 footer {
     position: fixed;

@@ -1,3 +1,4 @@
+
 // querySelector all elements
 const encrypt_button = document.querySelector("#encrypt_button"); // Encrypt button
 const decrypt_button = document.querySelector("#decrypt_button"); // Decrypt button
@@ -6,6 +7,7 @@ const output_text = document.querySelector("#output_text"); // get output text
 const input_text = document.querySelector("#input_text"); // get input text
 const copy_button = document.querySelector("#copy_button"); // get copy button
 const clear_button = document.querySelector("#clear_button"); // Clear button
+const error_message = document.querySelector("#error_message");
 
 // Encript and Decript functions
 
@@ -55,12 +57,36 @@ const decrypt = (text) => {
   if (text.includes("ufat")) {
     decrypt = decrypt.replace(/ufat/g, "u");
   }
-
+  
   return decrypt;
 };
 
 // Other functions
 
+const validateInput = (text) => {
+  // regular expression function to ckeck if the input contains spanish accent,
+  // special characters, if is lowercase and show or hide error message.
+  let regex = /[A-Z áéíóúñ]/g;
+  if (regex.test(text)) {
+    showErrorMessage(
+      "Please remove accents and special characters and make sure the text is lowercase"
+    );
+    return regex.test(text);
+  } else {
+    hideErrorMessage();
+  }
+};
+
+const showErrorMessage = (text) => {
+  // Show error message
+  error_message.style.display = "block";
+  error_message.innerHTML = text;
+};
+
+const hideErrorMessage = () => {
+  // Hide error message
+  error_message.style.display = "none";
+};
 
 const copyToClipboard = (text) => {
   // Copy to clipboard function
@@ -80,15 +106,15 @@ const showCopiedMessage = () => {
 };
 
 const showCopyAndClearButtons = () => {
-    // Show copy and clear buttons
-    copy_button.style.display = "block";
-    clear_button.style.display = "block";
+  // Show copy and clear buttons
+  copy_button.style.display = "block";
+  clear_button.style.display = "block";
 };
 
 const hideCopyAndClearButtons = () => {
-    // Hide copy and clear buttons
-    copy_button.style.display = "none"; 
-    clear_button.style.display = "none";
+  // Hide copy and clear buttons
+  copy_button.style.display = "none";
+  clear_button.style.display = "none";
 };
 
 const changeOutuptTextColor = (color) => {
@@ -101,26 +127,40 @@ const clearInputAndOutput = () => {
   input_text.value = "";
   output_text.innerHTML = "Encrypted Text Here";
   hideCopyAndClearButtons();
+  hideErrorMessage();
 };
 
 // Event Listeners
 
+input_text.addEventListener("keyup", () => {
+  // When input text changes
+  if (input_text.value.length > 0) {
+    validateInput(input_text.value);
+  } else {
+    hideErrorMessage();
+  }
+});
+
 encrypt_button.addEventListener("click", () => {
   // Encrypt addEventListener click
   let text = input_text.value;
-  let encrypted_text = encrypt(text);
-  output_text.innerHTML = encrypted_text;
-  changeOutuptTextColor("#000000"); // black
-  showCopyAndClearButtons();
+  if (!validateInput(text)) {
+    let encrypted_text = encrypt(text);
+    output_text.innerHTML = encrypted_text;
+    changeOutuptTextColor("#000000"); // black
+    showCopyAndClearButtons();
+  }
 });
 
 decrypt_button.addEventListener("click", () => {
   // Decrypt addEventListener click
   let text = input_text.value;
-  let decrypted_text = decrypt(text);
-  output_text.innerHTML = decrypted_text;
-  changeOutuptTextColor("#000000"); // black
+  if (!validateInput(text)) {
+    let decrypted_text = decrypt(text);
+    output_text.innerHTML = decrypted_text;
+    changeOutuptTextColor("#000000"); // black
     showCopyAndClearButtons();
+  }
 });
 
 copy_button.addEventListener("click", function () {
