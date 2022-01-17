@@ -26,9 +26,23 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 
 /* personalize title */
 .header h1 {
-    font-size: 40px;
+    font-size: 30px;
     color: #ffffff;
 }
+
+.instructions{
+    display: block;
+    width: 100vh;
+    color: #3b3b3b;
+}
+
+.instructions h2{
+    color: #145216;
+    text-align: center;
+    margin: 0;
+}
+
+
 
 #input_text {
     width: 50%;
