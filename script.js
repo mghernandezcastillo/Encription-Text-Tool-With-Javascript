@@ -1,4 +1,3 @@
-
 // querySelector all elements
 const encrypt_button = document.querySelector("#encrypt_button"); // Encrypt button
 const decrypt_button = document.querySelector("#decrypt_button"); // Decrypt button
@@ -7,7 +6,7 @@ const output_text = document.querySelector("#output_text"); // get output text
 const input_text = document.querySelector("#input_text"); // get input text
 const copy_button = document.querySelector("#copy_button"); // get copy button
 const clear_button = document.querySelector("#clear_button"); // Clear button
-const error_message = document.querySelector("#error_message");
+const error_message = document.querySelector("#error_message"); // Error message
 
 // Encript and Decript functions
 
@@ -57,7 +56,7 @@ const decrypt = (text) => {
   if (text.includes("ufat")) {
     decrypt = decrypt.replace(/ufat/g, "u");
   }
-  
+
   return decrypt;
 };
 
@@ -69,31 +68,25 @@ const validateInput = (text) => {
   let regex = /[A-ZÁÉÍÓÚáéíóúñÑ]/g;
   let flag;
 
-  if(regex.test(text) || text.length == 0){
-  flag = true;
-  }else{
-  flag = false;
+  if (regex.test(text) || text.length == 0) {
+    flag = true;
+  } else {
+    flag = false;
   }
-  
+
   if (flag && text.length > 0) {
     showErrorMessage(
       "Please remove accents and special characters and make sure the text is lowercase"
     );
-  } 
-  else if (text.length == 0 || text.replace(" ", "").length == 0) {
+  } else if (text.length == 0 || text.replace(" ", "").length == 0) {
     clearInputAndOutput();
     showErrorMessage("Please enter a text");
-  }
-  else {
+  } else {
     hideErrorMessage();
   }
 
   return flag;
-
-  
-  
 };
-
 
 const showErrorMessage = (text) => {
   // Show error message
@@ -183,7 +176,7 @@ decrypt_button.addEventListener("click", () => {
   }
 });
 
-copy_button.addEventListener("click", function () {
+copy_button.addEventListener("click", () => {
   // copy button addEventListener click
   copyToClipboard(output_text.innerText); // copy text from p tag to clipboard
   showCopiedMessage(); // show emergent message
