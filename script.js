@@ -67,15 +67,22 @@ const validateInput = (text) => {
   // regular expression function to ckeck if the input contains spanish accent,
   // special characters, if is lowercase and show or hide error message.
   let regex = /[A-Z áéíóúñ]/g;
-  if (regex.test(text)) {
+  let flag = regex.test(text);
+  
+  if (flag) {
     showErrorMessage(
       "Please remove accents and special characters and make sure the text is lowercase"
     );
-    return regex.test(text);
   } else {
     hideErrorMessage();
   }
+
+  return flag;
+
+  
+  
 };
+
 
 const showErrorMessage = (text) => {
   // Show error message
