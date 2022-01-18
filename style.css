@@ -131,12 +131,13 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 #error_message {
     color: #c24f62;
     font-size: 15px;
+    width: 40%;
     display: none;
 }
 
-/* Footer always visible and at the bottom and background color*/
+/* Footer at the bottom and background color*/
 footer {
-    position: fixed;
+    position: inherit;
     display: flex;
     left: 0;
     bottom: 0;

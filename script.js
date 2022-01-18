@@ -67,13 +67,24 @@ const validateInput = (text) => {
   // regular expression function to ckeck if the input contains spanish accent,
   // special characters, if is lowercase and show or hide error message.
   let regex = /[A-Z áéíóúñ]/g;
-  let flag = regex.test(text);
+  let flag;
+
+  if(regex.test(text) || text.length == 0){
+  flag = true;
+  }else{
+  flag = false;
+  }
   
-  if (flag) {
+  if (flag && text.length > 0) {
     showErrorMessage(
       "Please remove accents and special characters and make sure the text is lowercase"
     );
-  } else {
+  } 
+  else if (text.length == 0) {
+    showErrorMessage("Please enter a text");
+    clearInputAndOutput();
+  }
+  else {
     hideErrorMessage();
   }
 
@@ -135,6 +146,7 @@ const clearInputAndOutput = () => {
   output_text.innerHTML = "Encrypted Text Here";
   hideCopyAndClearButtons();
   hideErrorMessage();
+  changeOutuptTextColor("#969696");
 };
 
 // Event Listeners
