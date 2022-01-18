@@ -113,6 +113,7 @@ const copyToClipboard = (text) => {
   dummy.value = text; // Set its value to the string that you want copied
   dummy.select(); // Select the <textarea> content
   document.execCommand("copy"); // Copy - only works as a result of a user action (e.g. click events)
+  document.body.removeChild(dummy); // Remove the <textarea> element
 };
 
 const showCopiedMessage = () => {
