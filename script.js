@@ -81,8 +81,8 @@ const validateInput = (text) => {
     );
   } 
   else if (text.length == 0) {
-    showErrorMessage("Please enter a text");
     clearInputAndOutput();
+    showErrorMessage("Please enter a text");
   }
   else {
     hideErrorMessage();
