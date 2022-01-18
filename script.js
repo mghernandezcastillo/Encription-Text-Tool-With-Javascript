@@ -66,7 +66,7 @@ const decrypt = (text) => {
 const validateInput = (text) => {
   // regular expression function to ckeck if the input contains spanish accent,
   // special characters, if is lowercase and show or hide error message.
-  let regex = /[A-Z áéíóúñ]/g;
+  let regex = /^[A-Z-ÁÉÍÓÚáéíóúñÑ ]+$/g;
   let flag;
 
   if(regex.test(text) || text.length == 0){
