@@ -80,7 +80,7 @@ const validateInput = (text) => {
       "Please remove accents and special characters and make sure the text is lowercase"
     );
   } 
-  else if (text.length == 0) {
+  else if (text.length == 0 || text.replace(" ", "").length == 0) {
     clearInputAndOutput();
     showErrorMessage("Please enter a text");
   }
